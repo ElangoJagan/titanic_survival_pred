@@ -6,19 +6,15 @@ _logger_obj = Logger('main')
 logger = _logger_obj.get_logger()
 
 
-if __name__ == "__main__":
-    try:
-        logger.info("Pipeline Started")
+from src.components.data_ingestion import DataIngestion
+from src.components.data_transformation import DataTransformation
 
-        # Stage 1 - Data Ingestion
-        logger.info("Stage 1: Data Ingestion")
-        di = DataIngestion()
-        train_path, test_path = di.initiate_data_ingestion()
-        logger.info(f"Train → {train_path}")
-        logger.info(f"Test  → {test_path}")
-        logger.info("Stage 1 Done ✅")
+di = DataIngestion()
+train_path, test_path = di.initiate_data_ingestion()
+logger.info("Stage 1 Done")
 
-        logger.info("Pipeline Completed ✅")
-
-    except CustomException as e:
-        logger.error(f"Pipeline Failed: {e}")
+logger.info("Stage 2: Data Transformation")
+dt = DataTransformation()
+train_array, test_array, preprocessor_path = dt.initiate_data_transformation(
+train_path, test_path)
+logger.info("Stage 2 Done")

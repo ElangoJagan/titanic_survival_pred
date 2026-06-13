@@ -1,0 +1,15 @@
+[2026-06-13 23:31:23] data_ingestion - INFO - config loaded from : config/config.yaml
+[2026-06-13 23:31:23] data_ingestion - INFO - DataIngestion INitialized with config data
+[2026-06-13 23:31:23] data_ingestion - INFO - Data Ingestion Started
+[2026-06-13 23:31:24] data_ingestion - INFO - shape of df: (891, 12)
+[2026-06-13 23:31:24] data_ingestion - INFO - column list['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
+[2026-06-13 23:31:24] data_ingestion - INFO - raw path : artifacts\data_ingestion\titanic.csv
+[2026-06-13 23:31:24] data_ingestion - INFO - Train and test the data
+[2026-06-13 23:31:25] data_ingestion - INFO - Train Shape (712, 12) | Test_Shape (179, 12)
+[2026-06-13 23:31:25] data_ingestion - INFO - Train Survived ratio: 0.38 | Test Survived ratio: 0.39
+[2026-06-13 23:31:25] data_ingestion - INFO - data ingestion  Completed
+[2026-06-13 23:31:25] data_ingestion - INFO - ==================================================
+[2026-06-13 23:31:25] main - INFO - Stage 1 Done
+[2026-06-13 23:31:25] main - INFO - Stage 2: Data Transformation
+[2026-06-13 23:31:25] Data_Transformation - INFO - config loaded from : config/config.yaml
+[2026-06-13 23:31:25] exception - ERROR - error occured in File C:\Users\moune\OneDrive\Pictures\Desktop\Elango\IT Projects\Git_Clone_repo\Titanic_Survival_Prediction\src\components\data_transformation.py| line no 59| error message string indices must be integers, not 'str'
