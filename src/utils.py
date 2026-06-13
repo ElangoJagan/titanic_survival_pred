@@ -14,7 +14,7 @@ from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 
 
 from src.exception import CustomException
-from src.logger import logger
+from src.logger import Logger
 
 
 # ----------------logger Setup--------------
@@ -88,9 +88,7 @@ class Utils:
             raise CustomException(e, sys)
         
 # ===================Model Evaluation =======================================================
-    def evaluate_models(
-        
-        self, x_train:np.ndarray, y_train:np.ndarray, x_test:np.ndarray, y_test:np.ndarray, models:Dict[str, BaseEstimator],)->Dict[str,Dict[str,float]]:
+    def evaluate_models(self, x_train:np.ndarray, y_train:np.ndarray, x_test:np.ndarray, y_test:np.ndarray, models:Dict[str, BaseEstimator],)->Dict[str,Dict[str,float]]:
         
         
         """

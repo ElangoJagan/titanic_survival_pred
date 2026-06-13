@@ -1,5 +1,9 @@
 import sys
-from src.logger import logger 
+from src.logger import Logger 
+
+# ── Logger setup ──────────────────────────────────────────────
+_logger_obj = Logger("exception")
+logger = _logger_obj.get_logger()
 
 class CustomException(Exception):
     

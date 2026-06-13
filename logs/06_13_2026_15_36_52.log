@@ -1,0 +1,13 @@
+[2026-06-13 15:36:56] main - INFO - Pipeline Started
+[2026-06-13 15:36:56] main - INFO - Stage 1: Data Ingestion
+[2026-06-13 15:36:56] data_ingestion - INFO - config loaded from : config/config.yaml
+[2026-06-13 15:36:56] data_ingestion - INFO - DataIngestion INitialized with config data
+[2026-06-13 15:36:56] data_ingestion - INFO - Data Ingestion Started
+[2026-06-13 15:36:57] data_ingestion - INFO - shape of df: (891, 12)
+[2026-06-13 15:36:57] data_ingestion - INFO - column list['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
+[2026-06-13 15:36:57] data_ingestion - INFO - raw path : artifacts\data_ingestion\titanic.csv
+[2026-06-13 15:36:57] data_ingestion - INFO - Train and test the data
+[2026-06-13 15:36:58] data_ingestion - INFO - Train Shape (712, 12) | Test_Shape (179, 12)
+[2026-06-13 15:36:58] data_ingestion - INFO - Train Survived ratio: 0.38 | Test Survived ratio: 0.39
+[2026-06-13 15:36:58] data_ingestion - INFO - data ingestion  Completed
+[2026-06-13 15:36:58] data_ingestion - INFO - ==================================================
