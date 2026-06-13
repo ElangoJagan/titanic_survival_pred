@@ -3,7 +3,7 @@ from src.logger import logger
 
 class CustomException(Exception):
     
-    def __init__(self, error_message, error_detail:sys):
+    def __init__(self, error_message, error_detail:sys)-> str:
         super().__init__(error_message)
         self.error_message = self._get_detailed_error(error_message, error_detail)
         logger.error(self.error_message)
