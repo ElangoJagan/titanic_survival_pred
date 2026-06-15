@@ -1,20 +1,27 @@
-from src.logger import Logger
-from src.exception import CustomException
-from src.components.data_ingestion import DataIngestion
+"""
+main.py - Entry point.
+Run: python main.py
+"""
 
-_logger_obj = Logger('main')
+from src.logger import Logger
+import sys
+from src.exception import CustomException
+from src.pipeline.train_pipeline import TrainPipeline
+
+# ── Logger setup ──────────────────────────────────────────────
+_logger_obj = Logger("main")
 logger = _logger_obj.get_logger()
 
-
-from src.components.data_ingestion import DataIngestion
-from src.components.data_transformation import DataTransformation
-
-di = DataIngestion()
-train_path, test_path = di.initiate_data_ingestion()
-logger.info("Stage 1 Done")
-
-logger.info("Stage 2: Data Transformation")
-dt = DataTransformation()
-train_array, test_array, preprocessor_path = dt.initiate_data_transformation(
-train_path, test_path)
-logger.info("Stage 2 Done")
+if __name__ == "__main__":
+    try:
+        logger.info('Pipeline Started')
+        
+        pipeline = TrainPipeline()
+        best_model = pipeline.run()
+        
+        logger.info(f'Best Model : {best_model}')
+        logger.info('Pipeline Completed')
+    
+    except Exception as e:
+        raise CustomException (e,sys)
+    

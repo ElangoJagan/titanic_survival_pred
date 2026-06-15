@@ -1,0 +1,51 @@
+[2026-06-14 12:11:30] data_ingestion - INFO - config loaded from : config/config.yaml
+[2026-06-14 12:11:30] data_ingestion - INFO - DataIngestion INitialized with config data
+[2026-06-14 12:11:30] data_ingestion - INFO - Data Ingestion Started
+[2026-06-14 12:11:30] data_ingestion - INFO - shape of df: (891, 12)
+[2026-06-14 12:11:30] data_ingestion - INFO - column list['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
+[2026-06-14 12:11:30] data_ingestion - INFO - raw path : artifacts\data_ingestion\titanic.csv
+[2026-06-14 12:11:30] data_ingestion - INFO - Train and test the data
+[2026-06-14 12:11:30] data_ingestion - INFO - Train Shape (712, 12) | Test_Shape (179, 12)
+[2026-06-14 12:11:30] data_ingestion - INFO - Train Survived ratio: 0.38 | Test Survived ratio: 0.39
+[2026-06-14 12:11:30] data_ingestion - INFO - data ingestion  Completed
+[2026-06-14 12:11:30] data_ingestion - INFO - ==================================================
+[2026-06-14 12:11:30] main - INFO - Stage 1 Done
+[2026-06-14 12:11:30] main - INFO - Stage 2: Data Transformation
+[2026-06-14 12:11:30] Data_Transformation - INFO - config loaded from : config/config.yaml
+[2026-06-14 12:11:30] Data_Transformation - INFO - DataTransformation Initialized with config
+[2026-06-14 12:11:30] Data_Transformation - INFO - Data Transformation Started
+[2026-06-14 12:11:30] Data_Transformation - INFO - Train shape : (712, 12) | Test Shape :(179, 12)
+[2026-06-14 12:11:30] Data_Transformation - INFO - Starting Feature Engineering
+[2026-06-14 12:11:30] Data_Transformation - INFO - Feature Created : FamilySize
+[2026-06-14 12:11:30] Data_Transformation - INFO - updating the ISAlone is 1
+[2026-06-14 12:11:30] Data_Transformation - INFO - feature created : Title | Unique Titles: <StringArray>
+['Mr', 'Mrs', 'Rare', 'Miss', 'Master']
+Length: 5, dtype: str
+[2026-06-14 12:11:30] Data_Transformation - INFO - Feature Created : FamilySize
+[2026-06-14 12:11:30] Data_Transformation - INFO - updating the ISAlone is 1
+[2026-06-14 12:11:30] Data_Transformation - INFO - feature created : Title | Unique Titles: <StringArray>
+['Mr', 'Miss', 'Mrs', 'Rare', 'Master']
+Length: 5, dtype: str
+[2026-06-14 12:11:30] Data_Transformation - INFO - Feature Engineering Completed
+[2026-06-14 12:11:30] Data_Transformation - INFO - Dropper Columns : ['PassengerId', 'Name', 'Ticket', 'Cabin', 'SibSp', 'Parch']
+[2026-06-14 12:11:30] Data_Transformation - INFO - x_train: (712, 8) | x_test: (179, 8)
+[2026-06-14 12:11:30] Data_Transformation - INFO - numerical colummns : ['Pclass', 'Age', 'Fare', 'FamilySize', 'IsAlone']
+[2026-06-14 12:11:30] Data_Transformation - INFO - categorical cols:['Sex', 'Embarked', 'Title']
+[2026-06-14 12:11:30] Data_Transformation - INFO - Pipeline process successfully Completed
+[2026-06-14 12:11:30] Data_Transformation - INFO - Preprocessing fit on train, transform applied to both
+[2026-06-14 12:11:30] Data_Transformation - INFO - Train array shape: (712, 16)
+[2026-06-14 12:11:30] Data_Transformation - INFO - test array shape: (179, 16)
+[2026-06-14 12:11:30] utils - INFO - Object successfully saved ->artifacts\data_transformation\preprocessor.pkl
+[2026-06-14 12:11:30] Data_Transformation - INFO - Data Transformation Completed
+[2026-06-14 12:11:30] main - INFO - Stage 2 Done
+[2026-06-14 12:11:30] main - INFO - Stage 3: Model Trainer
+[2026-06-14 12:11:30] model_trainer - INFO - Config loaded successfully
+[2026-06-14 12:11:30] model_trainer - INFO - ModelTrainer initialized with config
+[2026-06-14 12:11:30] model_trainer - INFO - ==================================================
+[2026-06-14 12:11:30] model_trainer - INFO - Model Training Started
+[2026-06-14 12:11:30] model_trainer - INFO - X_train: (712, 15) | X_test: (179, 15)
+[2026-06-14 12:11:30] model_trainer - INFO - Params loaded successfully
+[2026-06-14 12:11:30] model_trainer - INFO - Models built: ['LogisticRegression', 'DecisionTree', 'RandomForest', 'GradientBoosting', 'AdaBoost', 'XGBoost', 'CatBoost', 'SVM', 'KNN']
+[2026-06-14 12:11:30] model_trainer - INFO - Evaluating all models...
+[2026-06-14 12:11:30] model_trainer - ERROR - Model Training Failed: Utils.evaluate_models() got an unexpected keyword argument 'X_train'. Did you mean 'x_train'?
+[2026-06-14 12:11:30] exception - ERROR - error occured in File C:\Users\moune\OneDrive\Pictures\Desktop\Elango\IT Projects\Git_Clone_repo\Titanic_Survival_Prediction\src\components\model_trainer.py| line no 170| error message Utils.evaluate_models() got an unexpected keyword argument 'X_train'. Did you mean 'x_train'?

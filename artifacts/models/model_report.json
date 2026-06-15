@@ -1,0 +1,47 @@
+{
+    "LogisticRegression": {
+        "accuracy": 0.838,
+        "f1_score": 0.782,
+        "roc_auc": 0.8776
+    },
+    "DecisionTree": {
+        "accuracy": 0.7989,
+        "f1_score": 0.7,
+        "roc_auc": 0.8449
+    },
+    "RandomForest": {
+        "accuracy": 0.8324,
+        "f1_score": 0.7727,
+        "roc_auc": 0.8615
+    },
+    "GradientBoosting": {
+        "accuracy": 0.8212,
+        "f1_score": 0.7576,
+        "roc_auc": 0.8448
+    },
+    "AdaBoost": {
+        "accuracy": 0.8212,
+        "f1_score": 0.7714,
+        "roc_auc": 0.8335
+    },
+    "XGBoost": {
+        "accuracy": 0.8156,
+        "f1_score": 0.7442,
+        "roc_auc": 0.8475
+    },
+    "CatBoost": {
+        "accuracy": 0.8045,
+        "f1_score": 0.7244,
+        "roc_auc": 0.8557
+    },
+    "SVM": {
+        "accuracy": 0.8324,
+        "f1_score": 0.7619,
+        "roc_auc": 0.8559
+    },
+    "KNN": {
+        "accuracy": 0.8156,
+        "f1_score": 0.7519,
+        "roc_auc": 0.8586
+    }
+}

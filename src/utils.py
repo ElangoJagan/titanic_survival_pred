@@ -88,62 +88,53 @@ class Utils:
             raise CustomException(e, sys)
         
 # ===================Model Evaluation =======================================================
-    def evaluate_models(self, x_train:np.ndarray, y_train:np.ndarray, x_test:np.ndarray, y_test:np.ndarray, models:Dict[str, BaseEstimator],)->Dict[str,Dict[str,float]]:
-        
-        
+    def evaluate_models(
+        self,
+        x_train: np.ndarray,
+        y_train: np.ndarray,
+        x_test: np.ndarray,
+        y_test: np.ndarray,
+        models: Dict[str, BaseEstimator],
+    ) -> Dict[str, Dict[str, float]]:
         """
         Train and evaluate multiple sklearn-compatible models.
         Reports Accuracy, F1 Score, and ROC-AUC for each model.
-
-        Args:
-            X_train:  Training features.
-            y_train:  Training labels.
-            X_test:   Test features.
-            y_test:   Test labels.
-            models:   Dict of {model_name: model_instance}.
-
-        Returns:
-            Dict: {model_name: {"accuracy": ..., "f1": ..., "roc_auc": ...}}
-
-        Raises:
-            CustomException: If evaluation fails.
         """
         try:
-            report:Dict[str, Dict[str,float]]= {}
-            
-            for name,model in  models.items():
-                logger.info(f'Training models: {name}')
-            
-            #Train
-            model.fit(x_train, y_train)
-            
-            #predict
-            y_pred = model.predict(x_test)
-            
-            #probabilities  for ROC-AUC ( NOT ALL MODELS SUPPORTS IT ) 
-            try:
-                y_prob = model.predict_proba(x_test)[:,1]
-                auc = round(roc_auc_score(y_test,y_prob), 4)
-            except AttributeError:
-                # SVM with no probability=True falls here
-                auc= None
-                logger.warning(f"{name} does not support predict_proba. ROC-AUC skipped.")
-                
-                #metrics
+            report: Dict[str, Dict[str, float]] = {}
+
+            for name, model in models.items():
+                logger.info(f'Training model: {name}')
+
+                # Train
+                model.fit(x_train, y_train)
+
+                # Predict
+                y_pred = model.predict(x_test)
+
+                # Probabilities for ROC-AUC
+                try:
+                    y_prob = model.predict_proba(x_test)[:, 1]
+                    auc = round(roc_auc_score(y_test, y_prob), 4)
+                except AttributeError:
+                    auc = None
+                    logger.warning(f"{name} does not support predict_proba. ROC-AUC skipped.")
+
+                # Metrics — outside except, inside for loop
                 acc = round(accuracy_score(y_test, y_pred), 4)
-                f1 = round(f1_score(y_test, y_pred),4)
-                
-                report[name]= {
-                    'accuracy ': acc,
-                    'f1_score' : f1,
-                    'roc_auc':auc
+                f1  = round(f1_score(y_test, y_pred), 4)
+
+                report[name] = {
+                    'accuracy': acc,   # ← no space
+                    'f1_score': f1,
+                    'roc_auc': auc
                 }
-                
-                logger.info(
-                    f'{name} -> Accuracy: {acc} | F1:{f1} | ROC-AUC:{auc}'
-                )
-            return report 
-        
+
+                logger.info(f'{name} -> Accuracy: {acc} | F1: {f1} | ROC-AUC: {auc}')
+
+            return report
+
         except Exception as e:
-            logger.error(f'Model evaluation failed:{e}')
+            logger.error(f'Model evaluation failed: {e}')
             raise CustomException(e)
+        
